@@ -6,9 +6,6 @@ class Solution:
                 a, b = b % a, a
             return b
 
-        def lcm(a, b):
-            return a * b // gcd(a, b)
-
         def num_analysis(num_str):
             minus = False
             num_str_no_sign = num_str
