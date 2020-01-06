@@ -44,8 +44,3 @@ class Solution:
         final_numerator, final_denominator = abs(final_numerator), abs(final_denominator)
         final_str = '-' * (res_value < 0) + str(final_numerator) + '/' + str(final_denominator)
         return num_analysis(final_str)[0]
-
-
-
-
-
