@@ -1,0 +1,15 @@
+# https://leetcode-cn.com/problems/plus-one/
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        n = len(digits)
+        for i in range(n-1, -1, -1):
+            if digits[i] + 1 < 10:
+                digits[i] += 1
+                return digits
+            elif i > 0:
+                digits[i] = 0
+            else:
+                digits[i] = 0
+                return [1] + digits
+
+
