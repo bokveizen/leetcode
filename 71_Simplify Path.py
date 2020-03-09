@@ -31,5 +31,3 @@ class Solution:
         for i in history:
             res += '/' + i
         return res if res else '/'
-
-
