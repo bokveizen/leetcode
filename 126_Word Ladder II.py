@@ -1,4 +1,52 @@
 # https://leetcode-cn.com/problems/word-ladder-ii/
+from collections import defaultdict
+class Solution:
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        if endWord not in wordList:
+            return []
+        n = len(beginWord)
+        helper_dict = defaultdict(list)
+        for word in wordList:
+            for i in range(n):
+                helper_dict[word[:i] + "*" + word[i + 1:]].append(word)
+        queue = [(beginWord, 1)]
+        visited = {beginWord: (None, 1)}
+        end_level = None
+        while queue:
+            current_word, level = queue.pop(0)
+            if level == end_level:
+                break
+            for i in range(n):
+                key = current_word[:i] + "*" + current_word[i + 1:]
+                for word in helper_dict[key]:
+                    if word == endWord:
+                        if not end_level:
+                            end_level = level + 1
+                    if word not in visited:
+                        visited[word] = ([current_word], level + 1)
+                        queue.append((word, level + 1))
+                    else:  # word already in visited
+                        if level + 1 == visited[word][1]:
+                            visited[word][0].append(current_word)
+        if not end_level:
+            return []
+        # print(visited)
+        res = [[endWord]]
+        for i in range(end_level - 1):
+            tmp = []
+            for cur in res:
+                first = cur[0]
+                prev_list = visited[first][0]
+                for prev in prev_list:
+                    tmp.append([prev] + cur)
+                res = tmp
+        return res
+
+
+
+
+
+# timeout
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
         if endWord not in wordList:
@@ -32,8 +80,6 @@ class Solution:
 
         backtrack()
         return res
-
-
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
         if endWord not in wordList:
@@ -83,8 +129,6 @@ class Solution:
                 res = tmp
             else:
                 return tmp
-
-
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
         if endWord not in wordList:
@@ -130,5 +174,5 @@ class Solution:
         return res
 
 
-# TODO: time optimization
+
 
