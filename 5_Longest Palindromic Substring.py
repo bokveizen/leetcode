@@ -11,11 +11,11 @@ class Solution:
             for i in range(j):
                 if s[i] == s[j]:
                     if j - i <= 2:
-                        dp[i][j] = True
+                        dp[i][j] = 1
                     else:
                         dp[i][j] = dp[i + 1][j - 1]
                 else:
-                    dp[i][j] = False
+                    dp[i][j] = 0
                 if dp[i][j] and j - i > res[1] - res[0]:
                     res = [i, j]
         return s[res[0]:res[1] + 1]
