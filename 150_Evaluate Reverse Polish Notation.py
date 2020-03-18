@@ -20,3 +20,4 @@ class Solution:
                         res = -res
                 stack.append(res)
         return stack.pop()
+

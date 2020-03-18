@@ -36,5 +36,3 @@ class Solution:
                 s[i] = " "
                 i += 1
         return "".join(s[:i])
-
-
