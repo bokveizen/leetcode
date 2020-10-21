@@ -27,6 +27,7 @@ class Solution:
 
         return buildT(preorder, inorder)
 
+
 # stack
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
@@ -42,7 +43,8 @@ class Solution:
         for index_p in range(1, len(preorder)):
             val_p = preorder[index_p]
             cur = stack[-1]
-            if stack[-1].val == inorder[index_i]:  # stack top has no left child, preorder[index_p] is the right child of some ancestor node of stack top
+            if stack[-1].val == inorder[index_i]:
+                # stack top has no left child, preorder[index_p] is the right child of some ancestor node of stack top
                 while stack and stack[-1].val == inorder[index_i]:
                     cur = stack.pop()
                     index_i += 1
