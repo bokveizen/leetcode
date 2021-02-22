@@ -1,4 +1,5 @@
 # https://leetcode-cn.com/problems/candy/
+# double enumeration
 class Solution:
     def candy(self, ratings: List[int]) -> int:
         n = len(ratings)
@@ -18,7 +19,31 @@ class Solution:
             res += max(left[i], right[i])
         return res
 
+# single enumeration
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+        n = len(ratings)
+        if n <= 1:
+            return n
+        if n == 2:
+            return 3 if ratings[0] != ratings[1] else 2
+        res = 1
+        inc, dec, pre = 1, 0, 1
+        for i in range(1, n):
+            if ratings[i] >= ratings[i - 1]:
+                dec = 0
+                pre = (1 if ratings[i] == ratings[i - 1] else pre + 1)
+                res += pre
+                inc = pre
+            else:
+                dec += 1
+                if dec == inc:
+                    dec += 1
+                res += dec
+                pre = 1        
+        return res
 
+# TIMEOUT
 class Solution:
     def candy(self, ratings: List[int]) -> int:
         n = len(ratings)
