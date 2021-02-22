@@ -18,8 +18,8 @@ class Solution:
                 return None
             mid = (left + right) >> 1
             root = TreeNode(nums[mid])
-            root.left = recur(left, mid-1)
-            root.right = recur(mid+1,right)
+            root.left = recur(left, mid - 1)
+            root.right = recur(mid + 1, right)
             return root
 
         return recur()
