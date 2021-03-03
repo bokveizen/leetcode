@@ -30,4 +30,3 @@ class Solution:
             cur = res[-1]
             res += [adj[cur][0]] if adj[cur][1] == res[-2] else [adj[cur][1]]
         return res
-
